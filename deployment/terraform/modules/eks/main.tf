@@ -185,28 +185,28 @@ resource "aws_eks_node_group" "main" {
 
 # EKS Add-on: VPC CNI
 resource "aws_eks_addon" "vpc_cni" {
-  cluster_name = aws_eks_cluster.main.name
-  addon_name   = "vpc-cni"
-  addon_version = "v1.12.6-eksbuild.2"
-  resolve_conflicts = "OVERWRITE"
+  cluster_name             = aws_eks_cluster.main.name
+  addon_name               = "vpc-cni"
+  addon_version            = "v1.12.6-eksbuild.2"
+  resolve_conflicts_on_create = "OVERWRITE"
 }
 
 # EKS Add-on: CoreDNS
 resource "aws_eks_addon" "coredns" {
-  cluster_name = aws_eks_cluster.main.name
-  addon_name   = "coredns"
-  addon_version = "v1.10.1-eksbuild.1"
-  resolve_conflicts = "OVERWRITE"
+  cluster_name             = aws_eks_cluster.main.name
+  addon_name               = "coredns"
+  addon_version            = "v1.10.1-eksbuild.1"
+  resolve_conflicts_on_create = "OVERWRITE"
 
   depends_on = [aws_eks_node_group.main]
 }
 
 # EKS Add-on: kube-proxy
 resource "aws_eks_addon" "kube_proxy" {
-  cluster_name = aws_eks_cluster.main.name
-  addon_name   = "kube-proxy"
-  addon_version = "v1.27.1-eksbuild.1"
-  resolve_conflicts = "OVERWRITE"
+  cluster_name             = aws_eks_cluster.main.name
+  addon_name               = "kube-proxy"
+  addon_version            = "v1.27.1-eksbuild.1"
+  resolve_conflicts_on_create = "OVERWRITE"
 }
 
 # modules/eks/variables.tf
@@ -291,12 +291,7 @@ output "oidc_issuer_url" {
   value       = aws_eks_cluster.main.identity[0].oidc[0].issuer
 }
 
-output "cluster_arn" {
-  description = "The Amazon Resource Name (ARN) of the cluster"
-  value       = aws_eks_cluster.main.arn
-}
-
-output "node_group_arn" {
-  description = "Amazon Resource Name (ARN) of the EKS Node Group"
-  value       = aws_eks_node_group.main.arn
+output "cluster_certificate_authority_data" {
+  description = "Base64 encoded certificate data required to communicate with the cluster"
+  value       = aws_eks_cluster.main.certificate_authority[0].data
 }

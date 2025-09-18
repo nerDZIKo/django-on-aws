@@ -3,8 +3,9 @@
 # Zmienne
 PROJECT_NAME := django-app
 ENVIRONMENT := dev
-AWS_REGION := eu-east-1
-DOCKER_REGISTRY := your-account.dkr.ecr.$(AWS_REGION).amazonaws.com
+AWS_REGION := eu-central-1
+AWS_ACCOUNT_ID := $(shell aws sts get-caller-identity --query Account --output text)
+DOCKER_REGISTRY := $(AWS_ACCOUNT_ID).dkr.ecr.$(AWS_REGION).amazonaws.com
 IMAGE_TAG := latest
 
 # Kolory dla outputu

@@ -29,7 +29,7 @@ spec:
         fsGroup: 1000
       containers:
       - name: django-app
-        image: your-account.dkr.ecr.eu-east-1.amazonaws.com/django-app:latest
+        image: your-account.dkr.ecr.eu-central-1.amazonaws.com/django-app:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080

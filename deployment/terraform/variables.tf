@@ -2,7 +2,7 @@
 variable "region" {
   description = "AWS region"
   type        = string
-  default     = "eu-east-1"
+  default     = "eu-central-1"
 }
 
 variable "project_name" {
@@ -32,7 +32,7 @@ variable "vpc_cidr" {
 variable "availability_zones" {
   description = "Availability zones"
   type        = list(string)
-  default     = ["eu-east-1a", "eu-east-1b", "eu-east-1c"]
+  default     = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
 }
 
 # EKS
@@ -96,7 +96,7 @@ variable "redis_node_type" {
 variable "django_image" {
   description = "Django Docker image"
   type        = string
-  default     = "your-account.dkr.ecr.eu-east-1.amazonaws.com/django-app:latest"
+  default     = "your-account.dkr.ecr.eu-central-1.amazonaws.com/django-app:latest"
 }
 
 variable "django_secret_key" {

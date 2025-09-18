@@ -42,7 +42,7 @@ pytest-django==4.7.0
 coverage==7.3.2
 
 # Security
-cryptography==41.0.8
+cryptography==42.0.8
 
 # Logging
 structlog==23.2.0
