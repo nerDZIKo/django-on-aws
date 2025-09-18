@@ -8,6 +8,11 @@ from django.contrib import admin
 from django.core.cache.backends.base import DEFAULT_TIMEOUT
 from django.urls import include, path, re_path
 from django.views.decorators.cache import cache_page
+from django.urls import path, include
+from django.http import JsonResponse
+
+def health_check(request):
+    return JsonResponse({'status': 'ok'})
 
 # from main.api_views import (
 #     CategoryCreate,

@@ -1,0 +1,35 @@
+# terraform.tfvars.example
+# Skopiuj ten plik do terraform.tfvars i dostosuj wartości
+
+# Ogólne ustawienia
+region       = "us-east-1"
+project_name = "django-app"
+environment  = "dev"
+
+# VPC ustawienia
+vpc_cidr           = "10.0.0.0/16"
+availability_zones = ["eu-central-1a", "eu-central-1b", "eu-central-1c"]
+
+# EKS ustawienia
+cluster_version     = "1.27"
+node_instance_types = ["t3.medium"]
+node_desired_size   = 2
+node_max_size       = 4
+node_min_size       = 1
+
+# RDS ustawienia
+db_instance_class = "db.t3.micro"
+db_name          = "djangodb"
+db_username      = "django"
+
+# ElastiCache ustawienia
+redis_node_type = "cache.t3.micro"
+
+# Aplikacja
+django_image      = "your-account.dkr.ecr.eu-central-1.amazonaws.com/django-app:latest"
+django_secret_key = "your-super-secret-django-key-change-this-in-production"
+
+# Opcjonalne: Backend S3 dla Terraform state
+# Odkomentuj i skonfiguruj jeśli chcesz używać zdalnego state
+# terraform_state_bucket = "your-terraform-state-bucket"
+# terraform_state_key    = "django-app/terraform.tfstate"

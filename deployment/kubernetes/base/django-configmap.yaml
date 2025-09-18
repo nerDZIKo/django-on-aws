@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: django-config
+  namespace: default
+data:
+  aws-region: "eu-east-1"
+  s3-bucket-name: "django-app-dev-static-files"
+  environment: "dev"
+  log-level: "INFO"
